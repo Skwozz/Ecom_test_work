@@ -23,3 +23,4 @@ class Equipment(models.Model):
     category = models.ForeignKey(Category, related_name='categories', on_delete=models.CASCADE)
     stock = models.ForeignKey(Stock, related_name='stocks', on_delete=models.CASCADE)
     username = models.ForeignKey(User, related_name='users', on_delete=models.CASCADE)
+

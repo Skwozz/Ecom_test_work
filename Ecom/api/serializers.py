@@ -1,3 +1,6 @@
+from django.http import request
+from rest_framework import serializers
+from .permissions import IsAdminOrReadOnly
 from rest_framework.serializers import ModelSerializer
 from .models import User, Stock, Category, Equipment
 
@@ -25,13 +28,19 @@ class StockSerializer(ModelSerializer):
         model = Stock
         fields = '__all__'
 
+
 class CategorySerializer(ModelSerializer):
      class Meta:
          model = Category
          fields = '__all__'
 
+
 class EquipmentSerializer(ModelSerializer):
-     class Meta:
+    username = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
          model = Equipment
          fields = '__all__'
+
+
 

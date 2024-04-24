@@ -48,7 +48,7 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
@@ -93,10 +93,10 @@ WSGI_APPLICATION = 'Ecom.wsgi.application'
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': 'app',
-#         'USER': 'postgres',
-#         'PASSWORD': '1423',
+#         'USER': 'django_admin',
+#         'PASSWORD': 'admin',
 #         'HOST': 'localhost',
 #         'PORT': 5433,
 #     }
