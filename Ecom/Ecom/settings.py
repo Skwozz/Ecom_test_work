@@ -91,22 +91,22 @@ WSGI_APPLICATION = 'Ecom.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'app',
-#         'USER': 'django_admin',
-#         'PASSWORD': 'admin',
-#         'HOST': 'localhost',
-#         'PORT': 5433,
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django-postgres',
+        'USER': 'django_admin',
+        'PASSWORD': 'admin',
+        'HOST': 'app-postgres',
+        'PORT': 5432,
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
