@@ -4,13 +4,15 @@ from .serializers import UserSerializer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.views import Response
 
-@api_view(['GET'])
+
+"""Реализация CRUD для сущности пользователя"""
+@api_view(['GET'])# Просмотр всех пользователей
 def userList(request):
     items = User.objects.all()
     serializer = UserSerializer(items, many=True)
     return Response(serializer.data)
 
-@api_view(['POST'])
+@api_view(['POST']) # Добавление/регистрация пользователя
 def userCreate(request):
     serializer = UserSerializer(data=request.data)
 
@@ -19,7 +21,7 @@ def userCreate(request):
 
     return Response(serializer.data)
 
-@api_view(['POST'])
+@api_view(['POST']) # Добавление/регистрация пользователя
 @permission_classes([IsAdminOrReadOnly])
 def userUpdate(request, pk):
     item = User.objects.get(id=pk)
@@ -30,7 +32,7 @@ def userUpdate(request, pk):
 
     return Response(serializer.data)
 
-@api_view(['DELETE'])
+@api_view(['DELETE']) # Удаление выбранного пользователя
 @permission_classes([IsAdminOrReadOnly])
 def userDelete(request, pk):
     item = User.objects.get(id=pk)

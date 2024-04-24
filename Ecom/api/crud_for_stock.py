@@ -6,14 +6,16 @@ from .permissions import IsAdminOrReadOnly
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.views import Response
 
-@api_view(['GET'])
-@permission_classes([IsAdminOrReadOnly])
+
+"""Реализация CRUD для сущности складов"""
+@api_view(['GET']) # Просмотр всех складов
+@permission_classes([IsAdminOrReadOnly]) # Ограничение пользователей на изменение информации
 def stockList(request):
     items = Stock.objects.all()
     serializer = StockSerializer(items, many=True)
     return Response(serializer.data)
 
-@api_view(['POST'])
+@api_view(['POST']) # Добавление склада
 @permission_classes([IsAdminOrReadOnly])
 def stockCreate(request):
     serializer = StockSerializer(data=request.data)
@@ -23,7 +25,7 @@ def stockCreate(request):
 
     return Response(serializer.data)
 
-@api_view(['POST'])
+@api_view(['POST']) # Изменение склада
 @permission_classes([IsAdminOrReadOnly])
 def stockUpdate(request, pk):
     item = Stock.objects.get(id=pk)
@@ -34,7 +36,7 @@ def stockUpdate(request, pk):
 
     return Response(serializer.data)
 
-@api_view(['DELETE'])
+@api_view(['DELETE']) # Удаление выбранной склада
 @permission_classes([IsAdminOrReadOnly])
 def stockDelete(request, pk):
     item = Stock.objects.get(id=pk)

@@ -4,14 +4,16 @@ from .permissions import IsAdminOrReadOnly
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.views import Response
 
-@api_view(['GET'])
-@permission_classes([IsAdminOrReadOnly])
+
+"""Реализация CRUD для сущности оборудования"""
+@api_view(['GET']) # Просмотр всего оборудования
+@permission_classes([IsAdminOrReadOnly])# Ограничение пользователей на изменение информации
 def equipmentList(request):
     items = Equipment.objects.all()
     serializer = EquipmentSerializer(items, many=True)
     return Response(serializer.data)
 
-@api_view(['POST'])
+@api_view(['POST']) # Добавление оборудования
 @permission_classes([IsAdminOrReadOnly])
 def equipmentCreate(request):
     serializer = EquipmentSerializer(data=request.data)
@@ -21,7 +23,7 @@ def equipmentCreate(request):
 
     return Response(serializer.data)
 
-@api_view(['POST'])
+@api_view(['POST']) # Изменение информации об оборудования
 @permission_classes([IsAdminOrReadOnly])
 def equipmentUpdate(request, pk):
     item = Equipment.objects.get(id=pk)
@@ -32,7 +34,7 @@ def equipmentUpdate(request, pk):
 
     return Response(serializer.data)
 
-@api_view(['DELETE'])
+@api_view(['DELETE']) # Удаление выбранного оборудования
 @permission_classes([IsAdminOrReadOnly])
 def equipmentDelete(request, pk):
     item = Equipment.objects.get(id=pk)
