@@ -13,7 +13,7 @@ router.register(r'equipments', EquipmentViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('api/', include(router.urls)),#работа с api через встроенный функционал rest-framework Api Root
+    path('api/', include(router.urls)), # работа с api через встроенный функционал rest-framework Api Root
 
     path('', views.ApiOverview, name='home'),#
 

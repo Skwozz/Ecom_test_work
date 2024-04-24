@@ -12,6 +12,8 @@ from rest_framework import status
 
 @api_view(['GET'])
 def ApiOverview(request):
+    """Функция по выводу на главную страницу всех эндпоинтов API"""
+
     api_urls = [
         {'API Root': 'http://127.0.0.1:8000/api/'},
     {'endpoints for stock':
@@ -36,11 +38,12 @@ def ApiOverview(request):
               'http://127.0.0.1:8000/delete/equipment/<str:pk>/', ]}
 
     ],
-
-
     return Response(api_urls)
 
-class UserViewSet(ModelViewSet):
+
+
+"""Набор представлений методов для просмотра и создания"""
+class UserViewSet(ModelViewSet): #
     queryset = User.objects.all()
     serializer_class = UserSerializer
 

@@ -45,11 +45,6 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'api.User'
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
@@ -97,10 +92,22 @@ DATABASES = {
         'NAME': 'django-postgres',
         'USER': 'django_admin',
         'PASSWORD': 'admin',
-        'HOST': 'app-postgres',
+        'HOST': '127.0.0.1',
         'PORT': 5432,
     }
 }
+# для постгреса
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'django-postgres',
+#         'USER': 'django_admin',
+#         'PASSWORD': 'admin',
+#         'HOST': 'app-postgres',
+#         'PORT': 5432,
+#     }
+# }
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
